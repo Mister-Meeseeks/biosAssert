@@ -26,3 +26,26 @@ management standpoint, than should trigger a fatal failure which alerts the sysa
 there the sysadmin can check the pending configuration, making the instructed changes at
 reboot. The sysadmin manually promotes the changes to indicate that they're currently set.
 bios assert will run without error until a different staged configuration is pushed.
+
+## Shell Commands
+
+There are four valid commands:
+
+````bios assert```` - Checks for any pending configuration changes to be made. If not, exits
+silently without 0 return code. Otherwise prints pending instructed changes to user, and exits
+with error return code.
+
+````bios stage [config path]```` - Stages the config found as the pending pre-boot changes to be 
+made. If you re-stage a replicate of your already current config, program will register that as
+no changes to be configured.
+
+```bios empty```` - Stages an empty config. Useful for indicating that no bios configuration is
+necessary at this time. If current config is already empty will register as no changes to be made.
+Otherwise, non-empty curent config will require a trivial call to promote.
+
+````bios promote```` - For correct tracking, only run *after* manual pre-boot changes have been
+made. Will prompt the user to re-confirm that currently pending changes have been properly 
+implemented. After invocation, will register as no changes needed until a different configuration
+is staged.
+
+
