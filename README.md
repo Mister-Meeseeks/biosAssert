@@ -39,7 +39,7 @@ with error return code.
 made. If you re-stage a replicate of your already current config, program will register that as
 no changes to be configured.
 
-```bios empty```` - Stages an empty config. Useful for indicating that no bios configuration is
+````bios empty```` - Stages an empty config. Useful for indicating that no bios configuration is
 necessary at this time. If current config is already empty will register as no changes to be made.
 Otherwise, non-empty curent config will require a trivial call to promote.
 
